@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Box</title>
+<style>
+/* Optional styling for the chat box */
+#chatContainer {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto;
+}
+</style>
+</head>
+<body>
+
+<div id="chatContainer">
+  <div id="chatMessages"></div>
+</div>
+<input type="text" id="messageInput">
+<button id="sendMessage">Send</button>
+
+<script >
+    document.addEventListener('DOMContentLoaded', function() {
+  const chatMessages = document.getElementById('chatMessages');
+  const messageInput = document.getElementById('messageInput');
+  const sendMessageButton = document.getElementById('sendMessage');
+
+  // Function to add a new message to the chat
+  function addMessage(message) {
+    const newMessage = document.createElement('div');
+    newMessage.textContent = message;
+    chatMessages.appendChild(newMessage);
+  }
+
+  // Event listener for sending a message
+  sendMessageButton.addEventListener('click', function() {
+    const message = messageInput.value;
+    if (message.trim() !== '') {
+      addMessage('You: ' + message);
+      messageInput.value = ''; // Clear the input field
+    }
+  });
+
+  // Example: Adding a welcome message
+  addMessage('Welcome to the chat!');
+});
+
+</script>
+</body>
+</html>
